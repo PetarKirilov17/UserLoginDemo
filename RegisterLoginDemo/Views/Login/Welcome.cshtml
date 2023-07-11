@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+@{
+    ViewData["Title"] = "Welcome";
+}
+@if (Accessor.HttpContext.Session.Get("Username") != null)
+{
+    <h2>Welcome @Accessor.HttpContext.Session.GetString("Username").ToString()</h2>
+}
+else
+{
+    Context.Response.Redirect("Index");
+}
+
+<div>
+    <a asp-action="Index">Logout</a>
+</div>
